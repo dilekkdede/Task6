@@ -7,6 +7,7 @@ import com.task.todo_app.dto.dtoResponse.CategoryDtoResponse;
 import com.task.todo_app.dto.dtoResponse.TaskDtoResponse;
 import com.task.todo_app.entity.Category;
 import com.task.todo_app.entity.Task;
+import com.task.todo_app.enums.RecordStatus;
 import com.task.todo_app.repository.CategoryRepository;
 import com.task.todo_app.services.ICategoryService;
 import org.springframework.beans.BeanUtils;
@@ -38,6 +39,7 @@ public class CategoryServiceImpl implements ICategoryService {
             CategoryDtoResponse categoryDtoResponse = new CategoryDtoResponse();
             Category category = new Category();
             BeanUtils.copyProperties(dto, category);
+            category.setStatus(RecordStatus.ACTIVE.getValue());
 
             Category dbCategory = categoryRepository.save(category);
             BeanUtils.copyProperties(dbCategory, categoryDtoResponse);

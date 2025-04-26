@@ -6,6 +6,7 @@ import com.task.todo_app.dto.dtoResponse.CategoryDtoResponse;
 import com.task.todo_app.dto.dtoResponse.TaskDtoResponse;
 import com.task.todo_app.entity.Category;
 import com.task.todo_app.entity.Task;
+import com.task.todo_app.enums.RecordStatus;
 import com.task.todo_app.repository.CategoryRepository;
 import com.task.todo_app.repository.TaskRepository;
 import com.task.todo_app.services.ITaskService;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,6 +66,8 @@ public class TaskServiceImpl implements ITaskService {
             TaskDtoResponse dtoResponse = new TaskDtoResponse();
             Task task = new Task();
             BeanUtils.copyProperties(dto, task);
+            task.setStatus(RecordStatus.ACTIVE.getValue());
+            task.setDueDate(new Date());
             Task dbTask = taskRepository.save(task);
             BeanUtils.copyProperties(dbTask, dtoResponse);
 

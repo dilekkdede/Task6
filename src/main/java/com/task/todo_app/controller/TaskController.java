@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/rest/api/task")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class TaskController {
 
     @Autowired
