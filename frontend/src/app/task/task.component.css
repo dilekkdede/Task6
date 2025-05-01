@@ -1,0 +1,21 @@
+
+.header {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  font-size: 40px;
+}
+
+.tablo {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+}
+
+.islem {
+  left: 1000px;
+  display: flex;
+  justify-content: flex-end;
+  width: 1650px;
+}

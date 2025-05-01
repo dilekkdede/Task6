@@ -1,1 +1,140 @@
-<p>category works!</p>
+<p-toast/>
+<div class="header">
+  CATEGORİES
+
+  <p-button [style]="{
+    padding: '0.75rem 3rem',
+    fontSize: '3rem',
+    border: '2px solid #2196F3'
+  }" icon="pi pi-plus" title="add category" [rounded]="false" [text]="true" (click)="showDialog()"
+            severity="info"/>
+
+  <p-dialog header="Add Category" [modal]="true" [(visible)]="visible"
+            [style]="{ width: '30rem', height: '20rem',color:'blue' }">
+    <br/>
+    <div>
+      <p-floatlabel>
+        <input [style]="{ width: '100%', height: '4rem', fontSize: '2.0rem'}" id="Name" pInputText [(ngModel)]="name"/>
+        <label style="font-size: 30px" for="Name">Name</label>
+      </p-floatlabel>
+    </div>
+    <br/>
+
+    <div style="float:right;">
+      <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
+      <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="saveCategory() ">KAYDET</p-button>
+      <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updateCategory()"> GÜNCELLE</p-button>
+
+    </div>
+  </p-dialog>
+</div>
+
+<div class="tablo">
+
+  <p-table
+    [value]="categories"
+    [paginator]="true"
+    [rows]="10"
+    [tableStyle]="{ 'min-width': '100rem' }"
+    [rowsPerPageOptions]="[2, 4, 8]"
+  >
+    <ng-template #header>
+      <tr>
+        <th style="">İD</th>
+        <th style="width:25%">NAME</th>
+        <th style="width:25%">STATUS</th>
+
+
+      </tr>
+    </ng-template>
+    <ng-template #body let-category>
+      <tr>
+        <td>{{ category.id }}</td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.status }}</td>
+
+
+        <td style="padding-left: 3px; padding-right:5px">
+          <p-button icon="pi pi-trash" (click)="deleteCategory(category)" severity="danger"
+                    rounded title="Sil"/>
+        </td>
+
+        <td>
+          <p-button icon="pi pi-pencil" (click)="editCategory(category)" severity="info" rounded
+                    title="Düzenle"/>
+        </td>
+
+        <td style="padding-left: 3px; padding-right:5px">
+          <p-button icon="pi pi-arrow-right" (click)="tasksByCategoryId(category.id)" severity="success"
+                    rounded title="Görevlere git"/>
+
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+
+<p-dialog
+  header="Tasks of the Category"
+  [(visible)]="showTasksDialog"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [resizable]="false"
+>
+  <p-table
+    [value]="tasks"
+    [paginator]="true"
+    [rows]="5"
+    [tableStyle]="{ 'min-width': '40rem' }"
+    [rowsPerPageOptions]="[2, 4, 8]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Task ID</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Due Date</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-task>
+      <tr>
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.dueDate | date:'medium' }}</td>
+
+        <td style="padding-left: 3px; padding-right:5px">
+          <p-button icon="pi pi-trash" (click)="deleteTask(task)" severity="danger"
+                    rounded title="Sil"/>
+        </td>
+
+        <td>
+          <p-checkbox [(ngModel)]="chechkBoxValue" [binary]="true" severity="danger"/>
+
+        </td>
+
+
+      </tr>
+    </ng-template>
+  </p-table>
+</p-dialog>
+
+
+<p-dialog
+  header="Tasks of the Category"
+  [(visible)]="showDialogButtons"
+  [modal]="true"
+  [style]="{ width: '30vw' }"
+  [resizable]="false"
+>
+  <!-- Filtreleme Butonları -->
+  <div class="dialog-buttons" style="text-align: center; margin-bottom: 1rem;">
+    <p-button label="Aktif Görevler" icon="pi pi-check" (click)="filterActiveTasks()"
+              [style]="{ 'margin-right': '1rem' }"></p-button>
+    <p-button label="Pasif Görevler" icon="pi pi-times" (click)="filterCompletedTasks()"></p-button>
+    <p-button label="Tüm Görevler" icon="pi pi-times" (click)="filterCompletedTasks()"></p-button>
+
+  </div>
+</p-dialog>
