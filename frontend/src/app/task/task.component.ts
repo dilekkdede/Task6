@@ -186,4 +186,14 @@ export class TaskComponent implements OnInit {
     });
   }
 
+  // @ts-ignore
+  getStatusColor(status: number) {
+    switch (status) {
+      case 0:
+        return 'success';
+      case 1:
+        return 'danger';
+    }
+  }
+
 }

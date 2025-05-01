@@ -39,6 +39,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {HomeComponent} from './home/home.component';
 import {Select} from "primeng/select";
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {Tag, TagModule} from 'primeng/tag';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     ImageModule,
     DropdownModule,
     Select,
-    ScrollPanelModule
+    ScrollPanelModule,
+    TagModule,
   ],
   providers: [
     MessageService,
