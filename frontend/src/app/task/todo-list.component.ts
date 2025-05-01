@@ -12,10 +12,10 @@ interface StatusParam {
 @Component({
   selector: 'app-task',
   standalone: false,
-  templateUrl: './task.component.html',
-  styleUrl: './task.component.css'
+  templateUrl: './todo-list.component.html',
+  styleUrl: './todo-list.component.css'
 })
-export class TaskComponent implements OnInit {
+export class TodoListComponent implements OnInit {
 
   visible: boolean = false;
   tasks: any = [];

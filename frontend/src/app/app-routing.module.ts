@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
-import {TaskComponent} from './task/task.component';
+import {TodoListComponent} from './task/todo-list.component';
 import {CategoryComponent} from './category/category.component';
 import {HomeComponent} from './home/home.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },//default route
   {path: 'app', component: AppComponent},
-  {path: 'app/task', component: TaskComponent},
+  {path: 'app/todo-list', component: TodoListComponent},
   {path: 'app/category', component: CategoryComponent},
 ];
 

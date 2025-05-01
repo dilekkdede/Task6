@@ -33,7 +33,7 @@ import {RippleModule} from 'primeng/ripple';
 import {ChartModule} from 'primeng/chart';
 import {InputMaskModule} from 'primeng/inputmask';
 import {FileUploadModule} from 'primeng/fileupload';
-import {TaskComponent} from './task/task.component';
+import {TodoListComponent} from './task/todo-list.component';
 import {CategoryComponent} from './category/category.component';
 import {DropdownModule} from "primeng/dropdown";
 import {HomeComponent} from './home/home.component';
@@ -44,7 +44,7 @@ import {Tag, TagModule} from 'primeng/tag';
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent,
+    TodoListComponent,
     CategoryComponent,
     HomeComponent,
   ],

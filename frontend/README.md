@@ -1,1 +1,6 @@
---
+--DueDate kısmını DatePickere dönüştür
+--CategorySeçiniz getir frontedne
+--Backednte durum seçmedeki gibi (status gibi) backendi düzenle
+--servisler repoya vs- query .
+-- frontendeki servisi de ona göre paramqtere yapacaksın (nullar tek tırnak)
+-- Hepsinin styleini düzelt
