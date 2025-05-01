@@ -85,14 +85,21 @@ public class TaskServiceImpl implements ITaskService {
     }
 
     @Override
-    public List<BaseResponse> findAll() {
+    public List<BaseResponse> findAll(Integer status) {
         List<BaseResponse> list = new ArrayList<>();
         BaseResponse baseResponse = new BaseResponse();
 
+        List<Task> tasks = new ArrayList<>();
 
         try {
             List<TaskDtoResponse> dtoResponseList = new ArrayList<>();
-            List<Task> tasks = taskRepository.findAll();
+            if (status == null) {
+                tasks = taskRepository.findAll();
+            } else {
+                tasks = taskRepository.findTaskByStatus(status);
+            }
+
+
             for (Task task : tasks) {
 
                 CategoryDtoResponse dtoResponseCategory = new CategoryDtoResponse();

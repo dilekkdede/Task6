@@ -24,8 +24,8 @@ public class TaskController {
     }
 
     @GetMapping(path = "/find-all")
-    public List<BaseResponse> findAll() {
-        return taskService.findAll();
+    public List<BaseResponse> findAll(@RequestParam(name = "status", required = false) Integer status) {
+        return taskService.findAll(status);
     }
 
     @GetMapping(path = "/find-id/{id}")
@@ -35,7 +35,7 @@ public class TaskController {
 
     @DeleteMapping(path = "/delete/{id}")
     public BaseResponse deleteById(@PathVariable(name = "id") long id) {
-       return taskService.deleteById(id);
+        return taskService.deleteById(id);
     }
 
     @PutMapping(path = "/update/{id}")

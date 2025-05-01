@@ -61,7 +61,7 @@ export class TaskComponent implements OnInit {
   }
 
   getData() {
-    this.taskService.findAll().then(response => {
+    this.taskService.findAll('').then(response => {
       this.tasks = response;
 
     });
@@ -177,6 +177,13 @@ export class TaskComponent implements OnInit {
 
   sorgula() {
     console.log(this.selectedStatus?.code);
+
+    const status = this.selectedStatus?.code === undefined ? '' : this.selectedStatus?.code;
+
+    this.taskService.findAll(status).then(response => {
+      this.tasks = response;
+
+    });
   }
 
 }
