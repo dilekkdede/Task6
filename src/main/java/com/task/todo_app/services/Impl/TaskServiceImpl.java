@@ -43,7 +43,7 @@ public class TaskServiceImpl implements ITaskService {
             }
             if (dto.getDueDate() == null) {
                 response.setStatus(HttpStatus.BAD_REQUEST.value());
-                response.setMessage("Lütfen görevin bitiş tarihini giriniz!");
+                response.setMessage("Lütfen görevin bitiş tarihini giriniz! (YY-MM-DD)");
                 return response;
             }
             if (dto.getCategory() == null) {
