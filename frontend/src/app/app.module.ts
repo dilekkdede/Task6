@@ -33,13 +33,14 @@ import {RippleModule} from 'primeng/ripple';
 import {ChartModule} from 'primeng/chart';
 import {InputMaskModule} from 'primeng/inputmask';
 import {FileUploadModule} from 'primeng/fileupload';
-import {TodoListComponent} from './task/todo-list.component';
+import {TodoListComponent} from './todo-list/todo-list.component';
 import {CategoryComponent} from './category/category.component';
 import {DropdownModule} from "primeng/dropdown";
 import {HomeComponent} from './home/home.component';
 import {Select} from "primeng/select";
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {Tag, TagModule} from 'primeng/tag';
+import { AddTodoComponent } from './todo-add/add-todo.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {Tag, TagModule} from 'primeng/tag';
     TodoListComponent,
     CategoryComponent,
     HomeComponent,
+    AddTodoComponent,
   ],
   imports: [
     BrowserModule,

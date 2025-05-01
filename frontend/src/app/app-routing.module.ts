@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
-import {TodoListComponent} from './task/todo-list.component';
+import {TodoListComponent} from './todo-list/todo-list.component';
 import {CategoryComponent} from './category/category.component';
 import {HomeComponent} from './home/home.component';
 

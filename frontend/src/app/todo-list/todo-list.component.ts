@@ -10,7 +10,7 @@ interface StatusParam {
 }
 
 @Component({
-  selector: 'app-task',
+  selector: 'app-todo-list',
   standalone: false,
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
