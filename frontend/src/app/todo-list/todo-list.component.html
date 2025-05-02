@@ -99,6 +99,7 @@
           <th style="width:25%">Status</th>
           <th style="width:25%">DueDate</th>
           <th style="width:25%">Category</th>
+          <th style="width:25%">İŞLEM</th>
 
         </tr>
       </ng-template>
@@ -111,15 +112,13 @@
                    [severity]="getStatusColor(task.status)"/>
           </td>
           <td>{{ task.dueDate | date:'MM/dd/yyyy HH:MM' }}</td>
-          <td>{{ task.category?.name }}</td>
+          <td style="margin-right: 2rem">{{ task.category?.name }}</td>
 
 
-          <td style="padding-left: 3px; padding-right:5px">
-            <p-button icon="pi pi-trash" (click)="confirmDelete($event,task.id)" severity="danger"
+          <td style="padding-left: 4px; padding-right:5px;">
+            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-trash" (click)="confirmDelete($event,task.id)" severity="danger"
                       rounded title="Sil"/>
-          </td>
 
-          <td>
             <p-button icon="pi pi-pencil" (click)="editTask(task)" severity="info" rounded
                       title="Düzenle"/>
           </td>
