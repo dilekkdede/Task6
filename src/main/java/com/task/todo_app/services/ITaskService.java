@@ -9,7 +9,7 @@ public interface ITaskService {
 
     BaseResponse save(TaskDtoRequest dto);
 
-    List<BaseResponse> findAll(Integer status);
+    List<BaseResponse> findAll(Integer status,Long categoryId);
 
     BaseResponse findById(long id);
 

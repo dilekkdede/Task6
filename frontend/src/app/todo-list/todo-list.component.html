@@ -2,26 +2,81 @@
 <div class="header">
   TASKS
   <p-button [style]="{
-    padding: '0.75rem 3rem',
+    padding: '0.5rem 1.5rem',
+    marginRight:'40px',
     fontSize: '3rem',
     border: '2px solid #2196F3'
   }" icon="pi pi-plus" title="add task" [rounded]="false" [text]="true" (click)="showDialog()" severity="info"/>
 
 
-  <p-select [options]="statusList" [(ngModel)]="selectedStatus" optionLabel="name" [showClear]="true"
+  <p-select [style]="{
+      padding: '0.0rem 1.5rem',
+
+    fontSize: '1.5rem',
+    marginRight:'40px',
+    border: '2px solid #2196F3'
+  }" [options]="statusList" [(ngModel)]="selectedStatus" optionLabel="name" [showClear]="true"
             placeholder="Durum seçiniz" class="w-full md:w-56"/>
 
-  <p-button [style]="{
-    padding: '0.75rem 6rem',
-    fontSize: '3rem',
+
+  <p-select [style]="{
+      padding: '0.0rem 1.5rem',
+
+    fontSize: '1.5rem',
+    marginRight:'40px',
     border: '2px solid #2196F3'
+  }" [options]="categories" [(ngModel)]="categoryId" optionLabel="name" [showClear]="true"
+            placeholder="Kategori seçiniz" class="w-full md:w-56"/>
+
+
+  <p-button [style]="{
+      padding: '0.4rem 6.0rem',
+    fontSize: '1.5rem',
+    border: '2px solid #2196F3',
+        marginRight:'40px'
+
   }" title="Sorgula" [rounded]="false" [text]="true" (click)="sorgula()" severity="info">Sorgula
   </p-button>
 
+
   <p-dialog header="Add Task" [modal]="true" [(visible)]="visible"
             [style]="{ width: '40rem', height: '32rem',color:'blue' }">
-    <app-todo-add></app-todo-add>
+    <br/>
+    <div>
+      <p-floatlabel>
+        <input [style]="{ width: '100%', height: '4rem', fontSize: '2.0rem'}" id="Title" pInputText
+               [(ngModel)]="title"/>
+        <label for="Title">Title</label>
+      </p-floatlabel>
+    </div>
+    <br/>
+    <div>
+      <p-floatlabel>
+        <p-dropdown
+          [options]="categories"
+          [(ngModel)]="categoryId"
+          optionLabel="name"
+          optionValue="id"
+          placeholder="Kategori seç"
+          [style]="{ width: '100%' }"
+        ></p-dropdown>
+
+      </p-floatlabel>
+    </div>
+    <br/>
+    <div>
+      <p-floatlabel>
+        <p-datepicker [style]="{ width: '100%', height: '4rem', fontSize: '2.0rem'}" [(ngModel)]="dueDate"
+                      [showIcon]="true" [showOnFocus]="false" id="DueDate"/>
+
+
+      </p-floatlabel>
+    </div>
     <div style="float:right;">
+      <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
+      <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="saveTask() ">KAYDET</p-button>
+      <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updateTask()"> GÜNCELLE</p-button>
+
     </div>
   </p-dialog>
 </div>

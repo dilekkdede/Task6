@@ -11,7 +11,8 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
 
-    @Query(value = "select p from Task p where p.status =:status")
-    List<Task> findTaskByStatus(int status);
+    @Query(value = "select p from Task p where (p.status =:status or :status is null) and(p.category.id =:categoryId or :categoryId is null)")
+    List<Task> findTaskByStatus(Integer status, Long categoryId);
+
 
 }

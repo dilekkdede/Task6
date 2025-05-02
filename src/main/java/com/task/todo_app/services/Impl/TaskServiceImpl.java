@@ -85,19 +85,15 @@ public class TaskServiceImpl implements ITaskService {
     }
 
     @Override
-    public List<BaseResponse> findAll(Integer status) {
+    public List<BaseResponse> findAll(Integer status, Long categoryId) {
         List<BaseResponse> list = new ArrayList<>();
         BaseResponse baseResponse = new BaseResponse();
 
-        List<Task> tasks = new ArrayList<>();
 
         try {
             List<TaskDtoResponse> dtoResponseList = new ArrayList<>();
-            if (status == null) {
-                tasks = taskRepository.findAll();
-            } else {
-                tasks = taskRepository.findTaskByStatus(status);
-            }
+
+            List<Task> tasks = taskRepository.findTaskByStatus(status, categoryId);
 
 
             for (Task task : tasks) {
@@ -121,6 +117,7 @@ public class TaskServiceImpl implements ITaskService {
             baseResponse.setMessage(e.getMessage());
             baseResponse.setData(null);
             list.add(baseResponse);
+            e.printStackTrace();
             return list;
         }
 

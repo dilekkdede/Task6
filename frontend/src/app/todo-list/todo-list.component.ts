@@ -2,12 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {TaskService} from '../services/task.service';
 import {MessageService} from 'primeng/api';
 import {CategoryService} from '../services/category.service';
+import {DatePipe} from '@angular/common';
 
 
 interface StatusParam {
   name: string;
   code: string;
 }
+
+interface CategoryParam {
+ category: string;
+}
+
 
 @Component({
   selector: 'app-todo-list',
@@ -30,8 +36,13 @@ export class TodoListComponent implements OnInit {
 
 
   statusList: StatusParam[] | undefined;
-
   selectedStatus: StatusParam | undefined;
+
+  selectedCategory: StatusParam | undefined;
+  categoryList: StatusParam[] | undefined;
+
+
+
 
 
   showDialog() {
@@ -44,7 +55,7 @@ export class TodoListComponent implements OnInit {
     this.category = null;
   }
 
-  constructor(private taskService: TaskService, private messageService: MessageService, private categoryService: CategoryService) {
+  constructor(private taskService: TaskService, private messageService: MessageService, private categoryService: CategoryService, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -115,9 +126,10 @@ export class TodoListComponent implements OnInit {
     this.isEditButton = true;
     this.visible = true;
     this.title = task.title;
-    this.dueDate = task.dueDate;
+    this.dueDate = this.datePipe.transform(task.dueDate, 'MM/dd/YYYY');
     this.categoryId = task.category?.id;
     this.taskId = task.id;
+
   }
 
   updateTask() {
