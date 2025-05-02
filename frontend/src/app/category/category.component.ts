@@ -23,9 +23,6 @@ export class CategoryComponent implements OnInit {
 
 
 
-  onCheckboxChange(task: any) {
-    console.log(`Task ${task.id} completed status: ${task.isChecked}`);
-  }
 
   showDialog() {
     this.isEditButton = false;
@@ -45,7 +42,6 @@ export class CategoryComponent implements OnInit {
 
   getData() {
     this.categoryService.findAll().then(response => {
-      console.log('Categories:', response);
 
       this.categories = response;
 
@@ -82,7 +78,6 @@ export class CategoryComponent implements OnInit {
     }).catch(error => {
       console.log(error);
     })
-    console.log(category);
   }
 
   updateCategory() {
@@ -115,7 +110,6 @@ export class CategoryComponent implements OnInit {
 
     })
 
-    console.log(category);
 
 
   }
@@ -137,7 +131,6 @@ export class CategoryComponent implements OnInit {
 
 
     this.categoryService.getTasksByCategoryId(categoryId).then(response => {
-      console.log('Tasks:', response);
       this.tasks = response;
       this.showTasksDialog = true;
     }).catch(error => {

@@ -12,8 +12,8 @@ export class TaskService {
   }
 
   //Forntend tarafında parametlere servise böyle geçilir
-  async findAll(status: any) {
-    const response = await axios.get(this.baseUrl + '/task/find-all?status=' + status).then(function (response) {
+  async findAll(status: any, categoryId: any) {
+    const response = await axios.get(this.baseUrl + '/task/find-all?status=' + status + '&categoryId=' + categoryId).then(function (response) {
       return response.data[0].data;
     })
     return response;

@@ -11,7 +11,7 @@ interface StatusParam {
 }
 
 interface CategoryParam {
- category: string;
+  category: string;
 }
 
 
@@ -42,9 +42,6 @@ export class TodoListComponent implements OnInit {
   categoryList: StatusParam[] | undefined;
 
 
-
-
-
   showDialog() {
     this.isEditButton = false;
     this.visible = true;
@@ -72,7 +69,7 @@ export class TodoListComponent implements OnInit {
   }
 
   getData() {
-    this.taskService.findAll('').then(response => {
+    this.taskService.findAll('', '').then(response => {
       this.tasks = response;
 
     });
@@ -166,7 +163,6 @@ export class TodoListComponent implements OnInit {
       console.log(error);
 
     })
-    console.log(task);
   }
 
   deleteTask(task: any) {
@@ -188,12 +184,14 @@ export class TodoListComponent implements OnInit {
   }
 
   sorgula() {
-    console.log(this.selectedStatus?.code);
 
     const status = this.selectedStatus?.code === undefined ? '' : this.selectedStatus?.code;
 
-    this.taskService.findAll(status).then(response => {
+    const categoryId = (this.categoryId === undefined || this.categoryId === null) ? '' : this.categoryId.id;
+
+    this.taskService.findAll(status, categoryId).then(response => {
       this.tasks = response;
+
 
     });
   }

@@ -31,47 +31,42 @@
 
 <div class="tablo">
 
-  <p-table
-    [value]="categories"
-    [paginator]="true"
-    [rows]="10"
-    [tableStyle]="{ 'min-width': '100rem' }"
-    [rowsPerPageOptions]="[2, 4, 8]"
-  >
-    <ng-template #header>
-      <tr>
-        <th style="">İD</th>
-        <th style="width:25%">NAME</th>
-        <th style="width:25%">STATUS</th>
+  <p-scrollpanel [style]="{ width: '100%', height: '550px' }">
 
+    <p-table
+      [value]="categories"
+      [paginator]="true"
+      [rows]="10"
+      [tableStyle]="{ 'min-width': '100rem' }"
+      [rowsPerPageOptions]="[2, 4, 8]"
+    >
+      <ng-template #header>
+        <tr>
+          <th style="">İD</th>
+          <th style="width:25%">NAME</th>
+          <th style="width:25%">STATUS</th>
+          <th>İŞLEM</th>
 
-      </tr>
-    </ng-template>
-    <ng-template #body let-category>
-      <tr>
-        <td>{{ category.id }}</td>
-        <td>{{ category.name }}</td>
-        <td>{{ category.status }}</td>
+        </tr>
+      </ng-template>
+      <ng-template #body let-category>
+        <tr>
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ category.status }}</td>
+          <td style="float: none ">
+            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-trash" (click)="deleteCategory(category)" severity="danger"
+                      rounded title="Sil"/>
+            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-pencil" (click)="editCategory(category)" severity="info" rounded
+                      title="Düzenle"/>
+            <p-button icon="pi pi-arrow-right" (click)="tasksByCategoryId(category.id)" severity="success"
+                      rounded title="Görevlere git"/>
+          </td>
 
-
-        <td style="padding-left: 3px; padding-right:5px">
-          <p-button icon="pi pi-trash" (click)="deleteCategory(category)" severity="danger"
-                    rounded title="Sil"/>
-        </td>
-
-        <td>
-          <p-button icon="pi pi-pencil" (click)="editCategory(category)" severity="info" rounded
-                    title="Düzenle"/>
-        </td>
-
-        <td style="padding-left: 3px; padding-right:5px">
-          <p-button icon="pi pi-arrow-right" (click)="tasksByCategoryId(category.id)" severity="success"
-                    rounded title="Görevlere git"/>
-
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-scrollpanel>
 
 </div>
 
@@ -82,6 +77,8 @@
   [style]="{ width: '50vw' }"
   [resizable]="false"
 >
+
+
   <p-table
     [value]="tasks"
     [paginator]="true"
@@ -108,11 +105,6 @@
         <td style="padding-left: 3px; padding-right:5px">
           <p-button icon="pi pi-trash" (click)="deleteTask(task)" severity="danger"
                     rounded title="Sil"/>
-        </td>
-
-        <td>
-          <p-checkbox [(ngModel)]="chechkBoxValue" [binary]="true" severity="danger"/>
-
         </td>
 
 
