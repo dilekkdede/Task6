@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskService} from '../services/task.service';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {CategoryService} from '../services/category.service';
 import {DatePipe} from '@angular/common';
 
@@ -52,7 +52,7 @@ export class TodoListComponent implements OnInit {
     this.category = null;
   }
 
-  constructor(private taskService: TaskService, private messageService: MessageService, private categoryService: CategoryService, private datePipe: DatePipe) {
+  constructor(private taskService: TaskService, private messageService: MessageService, private categoryService: CategoryService, private datePipe: DatePipe, private confirmationService: ConfirmationService) {
   }
 
   ngOnInit(): void {
@@ -165,8 +165,8 @@ export class TodoListComponent implements OnInit {
     })
   }
 
-  deleteTask(task: any) {
-    this.taskService.delete(task.id).then(response => {
+  deleteTask(taskId: any) {
+    this.taskService.delete(taskId).then(response => {
       if (response.status === 200) {
         this.visible = false;
         this.getData();
@@ -204,6 +204,31 @@ export class TodoListComponent implements OnInit {
       case 1:
         return 'danger';
     }
+  }
+
+  confirmDelete(event: Event, taskId: any) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Görevi silmek istediğinize emin misiniz!',
+      header: 'Danger Zone',
+      icon: 'pi pi-info-circle',
+      rejectLabel: 'Cancel',
+      rejectButtonProps: {
+        label: 'İptal',
+        severity: 'secondary',
+        outlined: true,
+      },
+      acceptButtonProps: {
+        label: 'Evet',
+        severity: 'danger',
+      },
+
+      accept: () => {
+        this.deleteTask(taskId);
+      },
+      reject: () => {
+      },
+    });
   }
 
 }

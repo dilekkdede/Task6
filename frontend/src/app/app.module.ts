@@ -28,7 +28,7 @@ import {TableModule} from 'primeng/table';
 import {TabsModule} from 'primeng/tabs';
 import {ImageModule} from 'primeng/image';
 
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {RippleModule} from 'primeng/ripple';
 import {ChartModule} from 'primeng/chart';
 import {InputMaskModule} from 'primeng/inputmask';
@@ -43,6 +43,7 @@ import {Tag, TagModule} from 'primeng/tag';
 import {AddTodoComponent} from './todo-add/add-todo.component';
 import {DatePicker, DatePickerModule} from 'primeng/datepicker';
 import {DatePipe} from '@angular/common';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -82,11 +83,13 @@ import {DatePipe} from '@angular/common';
     ScrollPanelModule,
     TagModule,
     DatePickerModule,
+    ConfirmDialogModule
 
   ],
   providers: [
     MessageService,
     DatePipe,
+    ConfirmationService,
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

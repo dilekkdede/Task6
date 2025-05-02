@@ -1,6 +1,6 @@
 <p-toast/>
 <div class="header">
-  TASKS
+  GÖREV LİSTESİ
   <p-button [style]="{
     padding: '0.5rem 1.5rem',
     marginRight:'40px',
@@ -115,7 +115,7 @@
 
 
           <td style="padding-left: 3px; padding-right:5px">
-            <p-button icon="pi pi-trash" (click)="deleteTask(task)" severity="danger"
+            <p-button icon="pi pi-trash" (click)="confirmDelete($event,task.id)" severity="danger"
                       rounded title="Sil"/>
           </td>
 
@@ -130,4 +130,8 @@
     </p-table>
   </p-scrollpanel>
 
+</div>
+
+<div class="card flex justify-center gap-2">
+  <p-confirmdialog/>
 </div>

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../services/category.service';
 import {MessageService} from 'primeng/api';
 import {TaskService} from '../services/task.service';
+import {ConfirmationService} from 'primeng/api';
+
 
 @Component({
   selector: 'app-category',
@@ -18,11 +20,6 @@ export class CategoryComponent implements OnInit {
   status: any = null;
   isEditButton: boolean = false;
 
-  chechkBoxValue: any = null;
-
-
-
-
 
   showDialog() {
     this.isEditButton = false;
@@ -33,7 +30,32 @@ export class CategoryComponent implements OnInit {
   }
 
 
-  constructor(private categoryService: CategoryService, private messageService: MessageService, private taskService: TaskService) {
+  constructor(private categoryService: CategoryService, private messageService: MessageService, private taskService: TaskService, private confirmationService: ConfirmationService) {
+  }
+
+  confirmDelete(event: Event, categoryId: any) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Kategoriyi silmek istediğinize emin misiniz!',
+      header: 'Danger Zone',
+      icon: 'pi pi-info-circle',
+      rejectLabel: 'Cancel',
+      rejectButtonProps: {
+        label: 'İptal',
+        severity: 'secondary',
+        outlined: true,
+      },
+      acceptButtonProps: {
+        label: 'Evet',
+        severity: 'danger',
+      },
+
+      accept: () => {
+        this.deleteCategory(categoryId);
+      },
+      reject: () => {
+      },
+    });
   }
 
   ngOnInit(): void {
@@ -111,7 +133,6 @@ export class CategoryComponent implements OnInit {
     })
 
 
-
   }
 
   showTasksDialog: boolean = false;
@@ -138,8 +159,8 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  deleteCategory(category: any) {
-    this.categoryService.delete(category.id).then(response => {
+  deleteCategory(categoryId: any) {
+    this.categoryService.delete(categoryId).then(response => {
       if (response.status === 200) {
         this.visible = false;
         this.getData();

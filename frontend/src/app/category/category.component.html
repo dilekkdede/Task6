@@ -1,6 +1,6 @@
 <p-toast/>
 <div class="header">
-  CATEGORİES
+  KATEGORİ LİSTESİ
 
   <p-button [style]="{
     padding: '0.75rem 3rem',
@@ -55,9 +55,11 @@
           <td>{{ category.name }}</td>
           <td>{{ category.status }}</td>
           <td style="float: none ">
-            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-trash" (click)="deleteCategory(category)" severity="danger"
+            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-trash" (click)="confirmDelete($event,category.id)"
+                      severity="danger"
                       rounded title="Sil"/>
-            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-pencil" (click)="editCategory(category)" severity="info" rounded
+            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-pencil" (click)="editCategory(category)"
+                      severity="info" rounded
                       title="Düzenle"/>
             <p-button icon="pi pi-arrow-right" (click)="tasksByCategoryId(category.id)" severity="success"
                       rounded title="Görevlere git"/>
@@ -130,3 +132,7 @@
 
   </div>
 </p-dialog>
+
+<div class="card flex justify-center gap-2">
+  <p-confirmdialog/>
+</div>
