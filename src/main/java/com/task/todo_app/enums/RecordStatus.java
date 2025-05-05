@@ -7,7 +7,8 @@ public enum RecordStatus {
 
     ACTIVE(1),
     DELETED(0),
-    ARCHIVED(2);
+    ARCHIVED(3),
+    COMPLETED(2);
 
     int value;
 

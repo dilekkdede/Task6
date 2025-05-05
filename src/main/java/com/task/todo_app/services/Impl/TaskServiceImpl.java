@@ -43,7 +43,7 @@ public class TaskServiceImpl implements ITaskService {
             }
             if (dto.getDueDate() == null) {
                 response.setStatus(HttpStatus.BAD_REQUEST.value());
-                response.setMessage("Lütfen görevin bitiş tarihini giriniz! (YY-MM-DD)");
+                response.setMessage("Lütfen görevin bitiş tarihini giriniz! (DD-MM-YYYY)");
                 return response;
             }
             if (dto.getCategory() == null) {
@@ -67,7 +67,6 @@ public class TaskServiceImpl implements ITaskService {
             Task task = new Task();
             BeanUtils.copyProperties(dto, task);
             task.setStatus(RecordStatus.ACTIVE.getValue());
-            task.setDueDate(new Date());
             Task dbTask = taskRepository.save(task);
             BeanUtils.copyProperties(dbTask, dtoResponse);
 
@@ -200,6 +199,7 @@ public class TaskServiceImpl implements ITaskService {
                 response.setMessage("Girilen Id'ye ait kategori bulunmamaktadır!");
                 return response;
             }
+
 
 
             TaskDtoResponse dtoResponse = new TaskDtoResponse();

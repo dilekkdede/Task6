@@ -139,13 +139,6 @@ export class CategoryComponent implements OnInit {
   showDialogButtons: boolean = false;
   tasks: any[] = [];
 
-  filterActiveTasks() {
-
-  }
-
-  filterCompletedTasks() {
-
-  }
 
 
   tasksByCategoryId(categoryId: number) {

@@ -38,8 +38,6 @@ export class TodoListComponent implements OnInit {
   statusList: StatusParam[] | undefined;
   selectedStatus: StatusParam | undefined;
 
-  selectedCategory: StatusParam | undefined;
-  categoryList: StatusParam[] | undefined;
 
 
   showDialog() {

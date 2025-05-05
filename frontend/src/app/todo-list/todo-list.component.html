@@ -6,7 +6,7 @@
     marginRight:'40px',
     fontSize: '3rem',
     border: '2px solid #2196F3'
-  }" icon="pi pi-plus" title="add task" [rounded]="false" [text]="true" (click)="showDialog()" severity="info"/>
+  }" icon="pi pi-plus" title="Görev ekle" [rounded]="false" [text]="true" (click)="showDialog()" severity="info"/>
 
 
   <p-select [style]="{
@@ -39,14 +39,14 @@
   </p-button>
 
 
-  <p-dialog header="Add Task" [modal]="true" [(visible)]="visible"
+  <p-dialog header="Görev Ekle" [modal]="true" [(visible)]="visible"
             [style]="{ width: '40rem', height: '32rem',color:'blue' }">
     <br/>
     <div>
       <p-floatlabel>
         <input [style]="{ width: '100%', height: '4rem', fontSize: '2.0rem'}" id="Title" pInputText
                [(ngModel)]="title"/>
-        <label for="Title">Title</label>
+        <label for="Title">Görev Başlığı</label>
       </p-floatlabel>
     </div>
     <br/>
@@ -95,10 +95,10 @@
       <ng-template #header>
         <tr>
           <th style="width:25%">İD</th>
-          <th style="width:25%">Title</th>
-          <th style="width:25%">Status</th>
-          <th style="width:25%">DueDate</th>
-          <th style="width:25%">Category</th>
+          <th style="width:25%">BAŞLIK</th>
+          <th style="width:25%">DURUM</th>
+          <th style="width:25%">BİTİŞ TARİHİ</th>
+          <th style="width:25%">KATEGORİ</th>
           <th style="width:25%">İŞLEM</th>
 
         </tr>
@@ -116,7 +116,8 @@
 
 
           <td style="padding-left: 4px; padding-right:5px;">
-            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-trash" (click)="confirmDelete($event,task.id)" severity="danger"
+            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-trash" (click)="confirmDelete($event,task.id)"
+                      severity="danger"
                       rounded title="Sil"/>
 
             <p-button icon="pi pi-pencil" (click)="editTask(task)" severity="info" rounded
