@@ -201,7 +201,6 @@ public class TaskServiceImpl implements ITaskService {
             }
 
 
-
             TaskDtoResponse dtoResponse = new TaskDtoResponse();
             Optional<Task> taskOptional = taskRepository.findById(id);
             if (taskOptional.isPresent()) {
@@ -227,5 +226,26 @@ public class TaskServiceImpl implements ITaskService {
             return response;
         }
     }
+
+    @Override
+    public BaseResponse completed(Long id) {
+        BaseResponse response = new BaseResponse();
+
+        TaskDtoResponse dtoResponse = new TaskDtoResponse();
+        Optional<Task> taskOptional = taskRepository.findById(id);
+        if (taskOptional.isPresent()) {
+            Task task = taskOptional.get();
+            task.setStatus(RecordStatus.COMPLETED.getValue());
+            Task dbTask = taskRepository.save(task);
+            BeanUtils.copyProperties(dbTask, dtoResponse);
+
+            response.setData(dtoResponse);
+            response.setStatus(HttpStatus.OK.value());
+            response.setMessage("Task statusu başarılı");
+
+        }
+        return response;
+    }
+
 
 }

@@ -42,4 +42,10 @@ public class TaskController {
     public BaseResponse update(@PathVariable(name = "id") Long id, @RequestBody TaskDtoRequest dto) {
         return taskService.update(id, dto);
     }
+
+    @GetMapping(path = "/completed/{id}")
+    public BaseResponse completed(@PathVariable(name = "id") long id) {
+        return taskService.completed(id);
+
+    }
 }

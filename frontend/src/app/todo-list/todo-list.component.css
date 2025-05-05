@@ -19,3 +19,11 @@
   justify-content: flex-end;
   width: 1650px;
 }
+
+table {
+  tbody {
+    td.col-button {
+      text-align: center;
+    }
+  }
+}

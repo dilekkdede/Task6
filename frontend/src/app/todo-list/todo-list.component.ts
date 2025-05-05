@@ -39,7 +39,6 @@ export class TodoListComponent implements OnInit {
   selectedStatus: StatusParam | undefined;
 
 
-
   showDialog() {
     this.isEditButton = false;
     this.visible = true;
@@ -227,6 +226,10 @@ export class TodoListComponent implements OnInit {
       reject: () => {
       },
     });
+  }
+
+  completed() {
+
   }
 
 }

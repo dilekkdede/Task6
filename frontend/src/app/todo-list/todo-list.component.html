@@ -88,18 +88,20 @@
     <p-table
       [value]="tasks"
       [paginator]="true"
+      [responsive]="true"
       [rows]="8"
       [tableStyle]="{ 'min-width': '100rem' }"
       [rowsPerPageOptions]="[2, 4, 8]"
     >
       <ng-template #header>
         <tr>
-          <th style="width:25%">İD</th>
-          <th style="width:25%">BAŞLIK</th>
-          <th style="width:25%">DURUM</th>
-          <th style="width:25%">BİTİŞ TARİHİ</th>
-          <th style="width:25%">KATEGORİ</th>
-          <th style="width:25%">İŞLEM</th>
+          <th>İD</th>
+          <th>BAŞLIK</th>
+          <th>DURUM</th>
+          <th>BİTİŞ TARİHİ</th>
+          <th>KATEGORİ</th>
+          <th>İŞLEM</th>
+
 
         </tr>
       </ng-template>
@@ -115,13 +117,19 @@
           <td style="margin-right: 2rem">{{ task.category?.name }}</td>
 
 
-          <td style="padding-left: 4px; padding-right:5px;">
-            <p-button [style]="{marginRight:'1rem'}" icon="pi pi-trash" (click)="confirmDelete($event,task.id)"
+          <td styleClass="col-button">
+            <p-button [style]="{ marginRight:'0.5rem'}" icon="pi pi-trash" (click)="confirmDelete($event,task.id)"
                       severity="danger"
                       rounded title="Sil"/>
 
-            <p-button icon="pi pi-pencil" (click)="editTask(task)" severity="info" rounded
+            <p-button [style]="{ marginRight:'0.5rem'}" icon="pi pi-pencil" (click)="editTask(task)" severity="info"
+                      rounded
                       title="Düzenle"/>
+
+
+            <p-button icon="pi pi-check" (click)="completed()" severity="warn" rounded
+                      title="Tamamla"/>
+
           </td>
 
 
