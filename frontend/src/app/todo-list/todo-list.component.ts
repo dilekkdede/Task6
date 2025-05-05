@@ -58,7 +58,7 @@ export class TodoListComponent implements OnInit {
 
 
     this.statusList = [
-      {name: 'Tamamlanmış', code: '0'},
+      {name: 'Tamamlanmış', code: '2'},
       {name: 'Tamamlanmamış', code: '1'},
 
     ];
@@ -68,7 +68,6 @@ export class TodoListComponent implements OnInit {
   getData() {
     this.taskService.findAll('', '').then(response => {
       this.tasks = response;
-
     });
   }
 
@@ -132,7 +131,7 @@ export class TodoListComponent implements OnInit {
     const task = {
       "id": this.taskId,
       "title": this.title,
-      "dueDate": this.dueDate,
+      "dueDate": new Date(this.dueDate),
       "category": {
         "id": this.categoryId,
       }
@@ -146,7 +145,7 @@ export class TodoListComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Başarılı',
-          detail: 'Başarılı bir şekilde kayıt yapıldı'
+          detail: response.message
         })
       }
       if (response.status === 400) {
@@ -158,8 +157,7 @@ export class TodoListComponent implements OnInit {
       }
     }).catch(error => {
       console.log(error);
-
-    })
+    });
   }
 
   deleteTask(taskId: any) {
@@ -196,7 +194,7 @@ export class TodoListComponent implements OnInit {
   // @ts-ignore
   getStatusColor(status: number) {
     switch (status) {
-      case 0:
+      case 2:
         return 'success';
       case 1:
         return 'danger';
@@ -228,8 +226,23 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  completed() {
+  completed(taskId: any) {
+    this.taskService.completed(taskId).then(response => {
+      if (response.status === 200) {
+        this.visible = false;
+        this.getData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Başarılı',
+          detail: response.message
+
+        })
+      }
+    }).catch(error => {
+      console.log(error);
+    })
 
   }
+
 
 }

@@ -1,6 +1,6 @@
 <p-toast/>
 <div class="header">
-  GÖREV LİSTESİ
+  <h2>GÖREV LİSTESİ</h2>
   <p-button [style]="{
     padding: '0.5rem 1.5rem',
     marginRight:'40px',
@@ -40,13 +40,13 @@
 
 
   <p-dialog header="Görev Ekle" [modal]="true" [(visible)]="visible"
-            [style]="{ width: '40rem', height: '32rem',color:'blue' }">
+            [style]="{ width: '45rem', height: '40rem',color:'blue' }">
     <br/>
     <div>
       <p-floatlabel>
-        <input [style]="{ width: '100%', height: '4rem', fontSize: '2.0rem'}" id="Title" pInputText
+        <input [style]="{ width: '100%', fontSize:'0.5rem;'}" id="Title" pInputText
                [(ngModel)]="title"/>
-        <label for="Title">Görev Başlığı</label>
+        <label [style]="{ fontSize:'0.5rem;'}" for="Title">Görev Başlığı</label>
       </p-floatlabel>
     </div>
     <br/>
@@ -66,10 +66,9 @@
     <br/>
     <div>
       <p-floatlabel>
-        <p-datepicker [style]="{ width: '100%', height: '4rem', fontSize: '2.0rem'}" [(ngModel)]="dueDate"
+        <p-datepicker [style]="{ width: '100%'}" [(ngModel)]="dueDate"
                       [showIcon]="true" [showOnFocus]="false" id="DueDate"/>
-
-
+        <label [style]="{ fontSize:'0.5rem;'}" for="DueDate">Bitiş Tarihi</label>
       </p-floatlabel>
     </div>
     <div style="float:right;">
@@ -127,8 +126,8 @@
                       title="Düzenle"/>
 
 
-            <p-button icon="pi pi-check" (click)="completed()" severity="warn" rounded
-                      title="Tamamla"/>
+            <p-button icon="pi pi-check" (click)="completed(task.id)" severity="warn" rounded
+                      title="Görevi Tamamla"/>
 
           </td>
 

@@ -84,10 +84,8 @@ public class TaskServiceImpl implements ITaskService {
     }
 
     @Override
-    public List<BaseResponse> findAll(Integer status, Long categoryId) {
-        List<BaseResponse> list = new ArrayList<>();
+    public BaseResponse findAll(Integer status, Long categoryId) {
         BaseResponse baseResponse = new BaseResponse();
-
 
         try {
             List<TaskDtoResponse> dtoResponseList = new ArrayList<>();
@@ -96,7 +94,6 @@ public class TaskServiceImpl implements ITaskService {
 
 
             for (Task task : tasks) {
-
                 CategoryDtoResponse dtoResponseCategory = new CategoryDtoResponse();
                 BeanUtils.copyProperties(task.getCategory(), dtoResponseCategory);
                 TaskDtoResponse dtoResponse = new TaskDtoResponse();
@@ -108,18 +105,14 @@ public class TaskServiceImpl implements ITaskService {
             baseResponse.setData(dtoResponseList);
             baseResponse.setStatus(HttpStatus.OK.value());
             baseResponse.setMessage("Görevler listesi:");
-            list.add(baseResponse);
-            return list;
 
         } catch (Exception e) {
             baseResponse.setStatus(HttpStatus.BAD_REQUEST.value());
             baseResponse.setMessage(e.getMessage());
             baseResponse.setData(null);
-            list.add(baseResponse);
-            e.printStackTrace();
-            return list;
         }
 
+        return baseResponse;
 
     }
 
@@ -207,7 +200,6 @@ public class TaskServiceImpl implements ITaskService {
                 Task task = taskOptional.get();
                 task.setTitle(dto.getTitle());
                 task.setCategory(dto.getCategory());
-                task.setStatus(dto.getStatus());
                 task.setDueDate(dto.getDueDate());
 
                 Task dbTask = taskRepository.save(task);
@@ -241,7 +233,7 @@ public class TaskServiceImpl implements ITaskService {
 
             response.setData(dtoResponse);
             response.setStatus(HttpStatus.OK.value());
-            response.setMessage("Task statusu başarılı");
+            response.setMessage("Görev Başarıyla tamamlandı!");
 
         }
         return response;

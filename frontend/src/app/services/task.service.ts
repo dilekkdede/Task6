@@ -14,7 +14,7 @@ export class TaskService {
   //Forntend tarafında parametlere servise böyle geçilir
   async findAll(status: any, categoryId: any) {
     const response = await axios.get(this.baseUrl + '/task/find-all?status=' + status + '&categoryId=' + categoryId).then(function (response) {
-      return response.data[0].data;
+      return response.data.data;
     })
     return response;
 
@@ -38,6 +38,13 @@ export class TaskService {
     const response = await axios.put(this.baseUrl + '/task/update/' + id, category).then(function (response) {
       return response.data;
     })
+    return response;
+  }
+
+  async completed(id: number) {
+    const response = await axios.get(this.baseUrl + '/task/completed/' + id).then(function (response) {
+      return response.data;
+    });
     return response;
   }
 

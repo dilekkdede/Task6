@@ -24,7 +24,7 @@ public class TaskController {
     }
 
     @GetMapping(path = "/find-all")
-    public List<BaseResponse> findAll(@RequestParam(name = "status", required = false) Integer status, @RequestParam(name = "categoryId", required = false) Long categoryId) {
+    public BaseResponse findAll(@RequestParam(name = "status", required = false) Integer status, @RequestParam(name = "categoryId", required = false) Long categoryId) {
         return taskService.findAll(status, categoryId);
     }
 
