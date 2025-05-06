@@ -1,6 +1,5 @@
 package com.task.todo_app.services.Impl;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.task.todo_app.dto.dtoBase.BaseResponse;
 import com.task.todo_app.dto.dtoRequest.CategoryDtoRequest;
 import com.task.todo_app.dto.dtoResponse.CategoryDtoResponse;

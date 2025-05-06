@@ -39,9 +39,9 @@ import {DropdownModule} from "primeng/dropdown";
 import {HomeComponent} from './home/home.component';
 import {Select} from "primeng/select";
 import {ScrollPanelModule} from 'primeng/scrollpanel';
-import {Tag, TagModule} from 'primeng/tag';
+import {TagModule} from 'primeng/tag';
 import {AddTodoComponent} from './todo-add/add-todo.component';
-import {DatePicker, DatePickerModule} from 'primeng/datepicker';
+import {DatePickerModule} from 'primeng/datepicker';
 import {DatePipe} from '@angular/common';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 

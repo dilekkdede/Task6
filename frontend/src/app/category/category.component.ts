@@ -140,7 +140,6 @@ export class CategoryComponent implements OnInit {
   tasks: any[] = [];
 
 
-
   tasksByCategoryId(categoryId: number) {
 
 
@@ -175,24 +174,6 @@ export class CategoryComponent implements OnInit {
     this.visible = true;
     this.name = category.name;
     this.categoryId = category.id;
-  }
-
-  deleteTask(task: any) {
-    this.taskService.delete(task.id).then(response => {
-      if (response.status === 200) {
-        this.visible = false;
-        this.getData();
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Başarılı',
-          detail: 'Task silindi'
-
-        })
-      }
-    }).catch(error => {
-      console.log(error);
-    })
-
   }
 
 

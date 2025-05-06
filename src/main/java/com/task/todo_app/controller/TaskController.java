@@ -2,12 +2,9 @@ package com.task.todo_app.controller;
 
 import com.task.todo_app.dto.dtoBase.BaseResponse;
 import com.task.todo_app.dto.dtoRequest.TaskDtoRequest;
-import com.task.todo_app.dto.dtoResponse.TaskDtoResponse;
 import com.task.todo_app.services.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController

@@ -1,11 +1,8 @@
 package com.task.todo_app.dto.dtoRequest;
 
 import com.task.todo_app.entity.Category;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 import java.util.Date;
 

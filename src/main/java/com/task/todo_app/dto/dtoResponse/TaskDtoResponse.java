@@ -1,9 +1,6 @@
 package com.task.todo_app.dto.dtoResponse;
 
-import com.task.todo_app.entity.Category;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;

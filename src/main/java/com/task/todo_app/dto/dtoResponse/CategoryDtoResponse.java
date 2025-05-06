@@ -1,9 +1,7 @@
 package com.task.todo_app.dto.dtoResponse;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -20,5 +18,4 @@ public class CategoryDtoResponse implements Serializable {
 
     private int status;
 
-   // private TaskDtoResponse taskDto;
 }
