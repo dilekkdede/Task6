@@ -1,36 +1,41 @@
+<p-dialog header="Görev Ekle" [modal]="true" [(visible)]="visible" [closable]="false"
+          [style]="{ width: '45rem', height: '40rem',color:'blue', backgroundColor: '#dad8d8'  }">
+  <br/>
+  <div>
+    <p-floatlabel>
+      <input [style]="{ width: '100%', fontSize:'0.5rem;'}" id="Title" pInputText
+             [(ngModel)]="title"/>
+      <label [style]="{ fontSize:'0.5rem;'}" for="Title">Görev Başlığı</label>
+    </p-floatlabel>
+  </div>
+  <br/>
+  <div>
+    <p-floatlabel>
+      <p-dropdown
+        [options]="categories"
+        [(ngModel)]="categoryId"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Kategori seç"
+        [style]="{ width: '100%' }"
+      ></p-dropdown>
 
-<div>
-  <p-floatlabel>
-    <input [style]="{ width: '100%', fontSize:'0.5rem;'}" id="Title" pInputText
-           [(ngModel)]="title"/>
-    <label [style]="{ fontSize:'0.5rem;'}" for="Title">Görev Başlığı</label>
-  </p-floatlabel>
-</div>
-<br/>
-<div>
-  <p-floatlabel>
-    <p-dropdown
-      [options]="categories"
-      [(ngModel)]="categoryId"
-      optionLabel="name"
-      optionValue="id"
-      placeholder="Kategori seç"
-      [style]="{ width: '100%' }"
-    ></p-dropdown>
+    </p-floatlabel>
+  </div>
+  <br/>
+  <div>
+    <p-floatlabel>
+      <p-datepicker [style]="{ width: '100%'}" [(ngModel)]="dueDate"
+                    [showIcon]="true" [showOnFocus]="false" id="DueDate"/>
+      <label [style]="{ fontSize:'0.5rem;'}" for="DueDate">Bitiş Tarihi</label>
+    </p-floatlabel>
+  </div>
+  <div style="float:right;">
+    <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
+    <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="saveTask() ">KAYDET</p-button>
+    <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updateTask()"> GÜNCELLE</p-button>
 
-  </p-floatlabel>
-</div>
-<br/>
-<div>
-  <p-floatlabel>
-    <p-datepicker [style]="{ width: '100%'}" [(ngModel)]="dueDate"
-                  [showIcon]="true" [showOnFocus]="false" id="DueDate"/>
-    <label [style]="{ fontSize:'0.5rem;'}" for="DueDate">Bitiş Tarihi</label>
-  </p-floatlabel>
-</div>
-<div style="float:right;">
-  <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
-  <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="saveTask() ">KAYDET</p-button>
-  <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updateTask()"> GÜNCELLE</p-button>
+  </div>
 
-</div>
+</p-dialog>
+

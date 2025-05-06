@@ -101,11 +101,11 @@
 
 </div>
 
+
 <!-- EDİT YAPTIĞIM ALAN -->
-<p-dialog header="Görev Ekle" [modal]="true" [(visible)]="visible"
-          [style]="{ width: '45rem', height: '40rem',color:'blue', backgroundColor: '#dad8d8'  }">
- <app-todo-add></app-todo-add>
-</p-dialog>
+<app-todo-add *ngIf="visible" [todoData]="inputData" [todoVisible]="visible"
+              (todoBackEvent)="todoBackEvent($event)"></app-todo-add>
+
 
 <div class="card flex justify-center gap-2">
   <p-confirmdialog/>

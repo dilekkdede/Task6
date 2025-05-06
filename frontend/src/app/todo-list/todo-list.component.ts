@@ -33,6 +33,7 @@ export class TodoListComponent implements OnInit {
   categoryId: any = null;
   isEditButton: boolean = false;
   categories: any[] = [];
+  inputData: any;
 
 
   statusList: StatusParam[] | undefined;
@@ -122,6 +123,7 @@ export class TodoListComponent implements OnInit {
     this.dueDate = this.datePipe.transform(task.dueDate, 'MM/dd/YYYY');
     this.categoryId = task.category?.id;
     this.taskId = task.id;
+    this.inputData = task;
 
   }
 
@@ -241,6 +243,17 @@ export class TodoListComponent implements OnInit {
     }).catch(error => {
       console.log(error);
     })
+
+  }
+
+  todoBackEvent(event: any) {
+
+    if (event) {
+      this.getData();
+      this.visible = false;
+      console.log("merhaba dilek");
+
+    }
 
   }
 
