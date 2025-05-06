@@ -10,7 +10,7 @@ public interface ICategoryService {
 
     BaseResponse save(CategoryDtoRequest dto);
 
-    List<BaseResponse> findAll();
+    BaseResponse findAll();
 
     BaseResponse findById(Long id);
 

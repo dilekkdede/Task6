@@ -24,7 +24,7 @@ public class CategoryController {
     }
 
     @GetMapping(path = "find-all")
-    public List<BaseResponse> findAll() {
+    public BaseResponse findAll() {
         return categoryService.findAll();
     }
 

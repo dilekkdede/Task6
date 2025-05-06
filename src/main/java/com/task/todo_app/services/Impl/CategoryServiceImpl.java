@@ -57,8 +57,7 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public List<BaseResponse> findAll() {
-        List<BaseResponse> responseList = new ArrayList<>();
+    public BaseResponse findAll() {
         BaseResponse categoryBaseResponse = new BaseResponse();
         try {
 
@@ -74,17 +73,15 @@ public class CategoryServiceImpl implements ICategoryService {
             categoryBaseResponse.setData(responses);
             categoryBaseResponse.setStatus(HttpStatus.OK.value());
             categoryBaseResponse.setMessage("Kategori listesi");
-            responseList.add(categoryBaseResponse);
 
-            return responseList;
 
         } catch (Exception e) {
             categoryBaseResponse.setMessage(e.getMessage());
             categoryBaseResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            responseList.add(categoryBaseResponse);
-            return responseList;
+            categoryBaseResponse.setData(null);
 
         }
+        return categoryBaseResponse;
     }
 
     @Override
