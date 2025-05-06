@@ -39,45 +39,6 @@
   </p-button>
 
 
-  <p-dialog header="Görev Ekle" [modal]="true" [(visible)]="visible"
-            [style]="{ width: '45rem', height: '40rem',color:'blue', backgroundColor: '#dad8d8'  }">
-    <br/>
-    <div>
-      <p-floatlabel>
-        <input [style]="{ width: '100%', fontSize:'0.5rem;'}" id="Title" pInputText
-               [(ngModel)]="title"/>
-        <label [style]="{ fontSize:'0.5rem;'}" for="Title">Görev Başlığı</label>
-      </p-floatlabel>
-    </div>
-    <br/>
-    <div>
-      <p-floatlabel>
-        <p-dropdown
-          [options]="categories"
-          [(ngModel)]="categoryId"
-          optionLabel="name"
-          optionValue="id"
-          placeholder="Kategori seç"
-          [style]="{ width: '100%' }"
-        ></p-dropdown>
-
-      </p-floatlabel>
-    </div>
-    <br/>
-    <div>
-      <p-floatlabel>
-        <p-datepicker [style]="{ width: '100%'}" [(ngModel)]="dueDate"
-                      [showIcon]="true" [showOnFocus]="false" id="DueDate"/>
-        <label [style]="{ fontSize:'0.5rem;'}" for="DueDate">Bitiş Tarihi</label>
-      </p-floatlabel>
-    </div>
-    <div style="float:right;">
-      <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
-      <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="saveTask() ">KAYDET</p-button>
-      <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updateTask()"> GÜNCELLE</p-button>
-
-    </div>
-  </p-dialog>
 </div>
 
 <div class="tablo">
@@ -137,7 +98,14 @@
     </p-table>
   </p-scrollpanel>
 
+
 </div>
+
+<!-- EDİT YAPTIĞIM ALAN -->
+<p-dialog header="Görev Ekle" [modal]="true" [(visible)]="visible"
+          [style]="{ width: '45rem', height: '40rem',color:'blue', backgroundColor: '#dad8d8'  }">
+ <app-todo-add></app-todo-add>
+</p-dialog>
 
 <div class="card flex justify-center gap-2">
   <p-confirmdialog/>

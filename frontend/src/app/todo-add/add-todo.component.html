@@ -1,1 +1,36 @@
-<p>todo-edit works!</p>
+
+<div>
+  <p-floatlabel>
+    <input [style]="{ width: '100%', fontSize:'0.5rem;'}" id="Title" pInputText
+           [(ngModel)]="title"/>
+    <label [style]="{ fontSize:'0.5rem;'}" for="Title">Görev Başlığı</label>
+  </p-floatlabel>
+</div>
+<br/>
+<div>
+  <p-floatlabel>
+    <p-dropdown
+      [options]="categories"
+      [(ngModel)]="categoryId"
+      optionLabel="name"
+      optionValue="id"
+      placeholder="Kategori seç"
+      [style]="{ width: '100%' }"
+    ></p-dropdown>
+
+  </p-floatlabel>
+</div>
+<br/>
+<div>
+  <p-floatlabel>
+    <p-datepicker [style]="{ width: '100%'}" [(ngModel)]="dueDate"
+                  [showIcon]="true" [showOnFocus]="false" id="DueDate"/>
+    <label [style]="{ fontSize:'0.5rem;'}" for="DueDate">Bitiş Tarihi</label>
+  </p-floatlabel>
+</div>
+<div style="float:right;">
+  <p-button label="İPTAL" severity="secondary" (onClick)="cancel()"/>
+  <p-button *ngIf="!isEditButton" [style]="{ margin:'2rem'}" (onClick)="saveTask() ">KAYDET</p-button>
+  <p-button *ngIf="isEditButton" [style]="{ margin:'2rem'}" (onClick)="updateTask()"> GÜNCELLE</p-button>
+
+</div>
