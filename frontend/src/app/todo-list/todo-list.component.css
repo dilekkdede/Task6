@@ -26,3 +26,7 @@ table {
     }
   }
 }
+
+td.col-button {
+  text-align: right;
+}

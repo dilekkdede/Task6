@@ -6,6 +6,7 @@
 .tablo {
   margin: 0px;
   height: 100%;
+  width: 100%;
   display: flex;
   position: fixed;
 }
@@ -15,4 +16,16 @@
   display: flex;
   justify-content: flex-end;
   width: 1650px;
+}
+
+table {
+  tbody {
+    td.col-button {
+      text-align: center;
+    }
+  }
+}
+
+td.col-button {
+  text-align: right;
 }
