@@ -14,7 +14,7 @@ export class CategoryService {
 
   async findAll() {
     const response = await axios.get(this.baseUrl + '/category/find-all').then(function (response) {
-      return response.data[0].data;
+      return response.data.data;
     })
     return response;
 
@@ -44,7 +44,7 @@ export class CategoryService {
   async getTasksByCategoryId(id: number) {
     const response = await axios.get(this.baseUrl + '/category/get-tasks-by-category-id/' + id)
       .then(function (response) {
-        return response.data[0].data;
+        return response.data.data;
       });
     return response;
   }

@@ -44,7 +44,7 @@ public class CategoryController {
     }
 
     @GetMapping(path = "/get-tasks-by-category-id/{id}")
-    public List<BaseResponse> getTasksByCategoryId(@PathVariable Long id) {
+    public BaseResponse getTasksByCategoryId(@PathVariable Long id) {
         return categoryService.getTasksByCategoryId(id);
     }
 }

@@ -181,8 +181,7 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public List<BaseResponse> getTasksByCategoryId(Long id) {
-        List<BaseResponse> responseList = new ArrayList<>();
+    public BaseResponse getTasksByCategoryId(Long id) {
         BaseResponse categoryBaseResponse = new BaseResponse();
         try {
             Optional<Category> optional = categoryRepository.findById(id);
@@ -207,14 +206,13 @@ public class CategoryServiceImpl implements ICategoryService {
                 categoryBaseResponse.setMessage("Kategori bulunamadı!");
             }
 
-            responseList.add(categoryBaseResponse);
         } catch (Exception e) {
             categoryBaseResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             categoryBaseResponse.setMessage(e.getMessage());
-            responseList.add(categoryBaseResponse);
+
         }
 
-        return responseList;
+        return categoryBaseResponse;
     }
 
 }

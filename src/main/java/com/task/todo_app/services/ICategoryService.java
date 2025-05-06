@@ -18,5 +18,5 @@ public interface ICategoryService {
 
     BaseResponse updateCategory(Long id, CategoryDtoRequest dto);
 
-    List<BaseResponse> getTasksByCategoryId(Long id);
+    BaseResponse getTasksByCategoryId(Long id);
 }
