@@ -19,7 +19,6 @@ public class CategoryController {
     public BaseResponse createCategory(@RequestBody CategoryDtoRequest dto) {
         return categoryService.save(dto);
     }
-
     @GetMapping(path = "find-all")
     public BaseResponse findAll() {
         return categoryService.findAll();
@@ -34,7 +33,6 @@ public class CategoryController {
     public BaseResponse deleteCategoryById(@PathVariable(name = "id") Long id) {
         return categoryService.deleteById(id);
     }
-
     @PutMapping(path = "/update/{id}")
     public BaseResponse updateCategory(@PathVariable(name = "id") Long id, @RequestBody CategoryDtoRequest dto) {
         return categoryService.updateCategory(id, dto);

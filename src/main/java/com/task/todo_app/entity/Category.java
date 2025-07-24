@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.ToStringExclude;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,9 +27,15 @@ public class Category {
     @Column(name = "status")
     private int status;
 
+    @Column(name = "descripton")
+    private String description;
+
+    @Column(name = "create_date")
+    private Date createDate;
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToStringExclude
-    private List<Task> tasks= new ArrayList<>();
+    private List<Task> tasks = new ArrayList<>();
 }

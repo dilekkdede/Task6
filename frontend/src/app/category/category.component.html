@@ -3,7 +3,7 @@
   <h2>KATEGORİ LİSTESİ</h2>
   <p-button [style]="{
     padding: '0.5rem 1.5rem',
-    marginRight:'40px',
+    marginRight:'px',
     fontSize: '3rem',
     border: '2px solid #2196F3'
   }" icon="pi pi-plus" title="Kategori Ekle" [rounded]="false" [text]="true"
@@ -11,15 +11,29 @@
             severity="info"/>
 
   <p-dialog header="Kategori Ekle" [modal]="true" [(visible)]="visible" [closable]="false"
-            [style]="{ width: '30rem', height: '20rem',color:'blue', backgroundColor: '#dad8d8' }">
+            [style]="{ width: '30rem', height: '30rem',color:'blue', backgroundColor: '#dad8d8' }">
     <br/>
     <div>
-      <p-floatlabel>
-        <input [style]="{ width: '100%', height: '4rem', fontSize: '2.0rem'}" id="Name" pInputText
-               [(ngModel)]="name"/>
-        <label style="font-size: 30px" for="Name">Adı</label>
-      </p-floatlabel>
+
+      <label style="font-size: 1.1rem" for="name">Kategori ismi</label>
+      <br/>
+      <input [style]="{ width: '100%', height: '3rem', fontSize: '1.0rem'}" id="name" pInputText
+             [(ngModel)]="name"/>
+
+
     </div>
+    <br/>
+
+    <div>
+
+      <label style="font-size: 1.1rem" for="area">Açıklama</label>
+      <br/>
+      <textarea [style]="{ width: '100%', fontSize: '1.0rem'}" pTextarea id="area" [(ngModel)]="description" rows="3"
+                cols="30" style="resize: none" class="h-full"></textarea>
+
+
+    </div>
+
     <br/>
 
     <div style="float:right;">
@@ -45,9 +59,9 @@
     >
       <ng-template #header>
         <tr>
-          <th >İD</th>
-          <th >ADI</th>
-          <th>DURUMU</th>
+          <th>İD</th>
+          <th>ADI</th>
+          <th>AÇIKLAMA</th>
           <th style="text-align: right">İŞLEM</th>
 
         </tr>
@@ -57,8 +71,7 @@
           <td>{{ category.id }}</td>
           <td>{{ category.name }}</td>
           <td>
-            <span *ngIf="category.status === 1" style="color: green; font-weight: bold;">Aktif</span>
-            <span *ngIf="category.status === 0" style="color: red; font-weight: bold;">Pasif</span>
+            {{ category.description }}
           </td>
 
           <td class="col-button">

@@ -19,12 +19,10 @@ public class TaskController {
     public BaseResponse save(@RequestBody TaskDtoRequest dto) {
         return taskService.save(dto);
     }
-
     @GetMapping(path = "/find-all")
     public BaseResponse findAll(@RequestParam(name = "status", required = false) Integer status, @RequestParam(name = "categoryId", required = false) Long categoryId) {
         return taskService.findAll(status, categoryId);
     }
-
     @GetMapping(path = "/find-id/{id}")
     public BaseResponse findById(@PathVariable(name = "id") long id) {
         return taskService.findById(id);
@@ -39,7 +37,6 @@ public class TaskController {
     public BaseResponse update(@PathVariable(name = "id") Long id, @RequestBody TaskDtoRequest dto) {
         return taskService.update(id, dto);
     }
-
     @GetMapping(path = "/completed/{id}")
     public BaseResponse completed(@PathVariable(name = "id") long id) {
         return taskService.completed(id);

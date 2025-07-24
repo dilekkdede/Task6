@@ -10,9 +10,6 @@ interface StatusParam {
   code: string;
 }
 
-interface CategoryParam {
-  category: string;
-}
 
 
 @Component({

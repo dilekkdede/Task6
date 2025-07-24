@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   name: any = null;
   status: any = null;
   isEditButton: boolean = false;
+  description: any = null;
 
 
   showDialog() {
@@ -27,6 +28,7 @@ export class CategoryComponent implements OnInit {
     this.name = null;
     this.status = null;
     this.categoryId = null;
+    this.description = null;
   }
 
 
@@ -78,6 +80,7 @@ export class CategoryComponent implements OnInit {
     const category = {
       "id": null,
       "name": this.name,
+      "description": this.description,
 
     }
     this.categoryService.save(category).then(response => {
@@ -108,6 +111,7 @@ export class CategoryComponent implements OnInit {
     const category = {
       "id": this.categoryId,
       "name": this.name,
+      "description": this.description,
     }
     this.categoryService.update(this.categoryId, category).then(response => {
 
@@ -169,11 +173,11 @@ export class CategoryComponent implements OnInit {
   }
 
   editCategory(category: any) {
-
     this.isEditButton = true;
     this.visible = true;
     this.name = category.name;
     this.categoryId = category.id;
+    this.description = category.description;
   }
 
 

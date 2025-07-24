@@ -18,6 +18,8 @@ public class TaskDtoResponse implements Serializable {
 
     private Date dueDate;
 
+
+
     private CategoryDtoResponse category;
 
 }

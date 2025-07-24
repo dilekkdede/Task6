@@ -9,10 +9,8 @@ import lombok.Setter;
 
 public class CategoryDtoRequest {
 
-    private Long id;
 
     private String name;
-
-    private int status;
+    private String description;
 
 }

@@ -17,7 +17,6 @@ export class AddTodoComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   visible: boolean = false;
-
   title: any = null;
   categories: any[] = [];
   categoryId: any = null;
