@@ -32,7 +32,9 @@ export class CategoryComponent implements OnInit {
   }
 
 
-  constructor(private categoryService: CategoryService, private messageService: MessageService, private taskService: TaskService, private confirmationService: ConfirmationService) {
+  constructor(private categoryService: CategoryService,
+              private messageService: MessageService,
+              private confirmationService: ConfirmationService) {
   }
 
   confirmDelete(event: Event, categoryId: any) {

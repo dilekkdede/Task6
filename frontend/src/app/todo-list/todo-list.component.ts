@@ -10,8 +10,6 @@ interface StatusParam {
   code: string;
 }
 
-
-
 @Component({
   selector: 'app-todo-list',
   standalone: false,
@@ -77,41 +75,6 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  cancel() {
-    this.visible = false;
-  }
-
-  saveTask() {
-    const task = {
-      title: this.title,
-      dueDate: this.dueDate,
-      category: {
-        id: this.categoryId
-      }
-    };
-
-    this.taskService.save(task).then(response => {
-      if (response.status === 201) {
-        this.visible = false;
-        this.getData();
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Başarılı',
-          detail: 'Başarılı bir şekilde kayıt yapıldı'
-        })
-      }
-      if (response.status === 400) {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Başarısız',
-          detail: response.message
-        })
-      }
-    }).catch(error => {
-      console.log(error);
-    });
-  }
-
 
   editTask(task: any) {
     this.isEditButton = true;
@@ -120,44 +83,10 @@ export class TodoListComponent implements OnInit {
     this.dueDate = this.datePipe.transform(task.dueDate, 'MM/dd/YYYY');
     this.categoryId = task.category?.id;
     this.taskId = task.id;
-    this.inputData = task;
+    this.inputData = task; //Tamamen taskı iletiyorum sana input ile karşıla
 
   }
 
-  updateTask() {
-    this.visible = true;
-
-    const task = {
-      "id": this.taskId,
-      "title": this.title,
-      "dueDate": new Date(this.dueDate),
-      "category": {
-        "id": this.categoryId,
-      }
-
-    }
-
-    this.taskService.update(this.taskId, task).then(response => {
-      if (response.status === 200) {
-        this.visible = false;
-        this.getData();
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Başarılı',
-          detail: response.message
-        })
-      }
-      if (response.status === 400) {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Başarısız',
-          detail: response.message
-        })
-      }
-    }).catch(error => {
-      console.log(error);
-    });
-  }
 
   deleteTask(taskId: any) {
     this.taskService.delete(taskId).then(response => {
@@ -248,7 +177,6 @@ export class TodoListComponent implements OnInit {
     if (event) {
       this.getData();
       this.visible = false;
-      console.log("merhaba dilek");
 
     }
 
